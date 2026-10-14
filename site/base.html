@@ -7,8 +7,9 @@
   <meta name="description" content="{{description}}">
   <link rel="canonical" href="{{base}}{{url}}">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <meta name="theme-color" content="#f6f4ef" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#101114" media="(prefers-color-scheme: dark)">
+  <!-- The site defaults to light regardless of system preference, so the browser
+       chrome should match rather than follow prefers-color-scheme. -->
+  <meta name="theme-color" content="#faf9f5">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Forall Labs">
   <meta property="og:title" content="{{og_title}}">
@@ -20,6 +21,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap">
   <link rel="stylesheet" href="/styles.css">
+  <script>
+    // Set the theme before first paint so there is no flash. Light is the
+    // default; only an explicit stored choice switches to dark.
+    try {
+      var stored = localStorage.getItem("theme");
+      document.documentElement.setAttribute("data-theme", stored === "dark" ? "dark" : "light");
+    } catch (e) {
+      document.documentElement.setAttribute("data-theme", "light");
+    }
+  </script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -30,9 +41,14 @@
         <span class="mark" aria-hidden="true">&forall;</span>
         <span class="brand-name">Forall Labs</span>
       </a>
+      <div class="header-tools">
       <nav class="nav" aria-label="Main">
 {{nav}}
       </nav>
+      <button class="theme-toggle" type="button" id="theme-toggle" aria-label="Switch to dark theme">
+        <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.8v2.4M12 19.8v2.4M4.0 4.0l1.7 1.7M18.3 18.3l1.7 1.7M1.8 12h2.4M19.8 12h2.4M4.0 20.0l1.7-1.7M18.3 5.7l1.7-1.7"/></svg>
+      </button>
       <details class="menu">
         <summary aria-label="Menu"><span></span></summary>
         <div class="menu-panel">
@@ -41,6 +57,7 @@
           </nav>
         </div>
       </details>
+      </div>
     </div>
   </header>
 
@@ -97,5 +114,23 @@
       </div>
     </div>
   </footer>
+  <script>
+    (function () {
+      var btn = document.getElementById("theme-toggle");
+      if (!btn) return;
+      var root = document.documentElement;
+      function label() {
+        btn.setAttribute("aria-label",
+          root.getAttribute("data-theme") === "dark" ? "Switch to light theme" : "Switch to dark theme");
+      }
+      label();
+      btn.addEventListener("click", function () {
+        var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+        root.setAttribute("data-theme", next);
+        try { localStorage.setItem("theme", next); } catch (e) {}
+        label();
+      });
+    })();
+  </script>
 </body>
 </html>

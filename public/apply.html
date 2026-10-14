@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Join Forall Labs</title>
+  <meta name="description" content="Apply to join Forall Labs, an independent, non-profit, open research community in AI.">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <!-- Cloudflare Turnstile spam check (free). Re-enable with the form endpoint.
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  -->
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="brand" href="/" aria-label="Forall Labs home">
+        <span class="mark" aria-hidden="true">&forall;</span>
+        <span class="brand-name">Forall Labs</span>
+      </a>
+      <nav aria-label="Main">
+        <a href="/#research">Research</a>
+        <a href="/#involved">Get involved</a>
+        <a href="/#about">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Interim preview notice: remove once forall-labs.ai and the form backend are live. -->
+  <div class="notice-bar">
+    <div class="wrap">
+      <p><strong>Preview.</strong> Forall Labs is being set up. The membership forms and the <code>@forall-labs.ai</code> address are not live yet &mdash; reach us at <a href="https://github.com/forall-labs">github.com/forall-labs</a> in the meantime.</p>
+    </div>
+  </div>
+
+  <main id="main" class="wrap section form-page">
+    <p class="eyebrow">Membership</p>
+    <h1 class="page-title">Join Forall Labs</h1>
+    <p class="section-lead">Membership is free and open to everyone. Tell us a little about yourself so we can connect you with the right projects. It takes about five minutes.</p>
+
+    <form class="form" method="post" action="/api/submit">
+      <input type="hidden" name="form" value="application">
+      <!-- Honeypot: hidden from people, bots fill it in. -->
+      <div class="hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+
+      <div class="field-row">
+        <label class="field">
+          <span>Full name <em>*</em></span>
+          <input type="text" name="name" required autocomplete="name" maxlength="200">
+        </label>
+        <label class="field">
+          <span>Email <em>*</em></span>
+          <input type="email" name="email" required autocomplete="email" maxlength="200">
+        </label>
+      </div>
+
+      <div class="field-row">
+        <label class="field">
+          <span>City and country</span>
+          <input type="text" name="location" maxlength="200" placeholder="Toronto, Canada">
+        </label>
+        <label class="field">
+          <span>You are mainly a&hellip; <em>*</em></span>
+          <select name="role" required>
+            <option value="">Choose one</option>
+            <option>Student</option>
+            <option>Independent researcher</option>
+            <option>Academic researcher</option>
+            <option>Industry engineer or scientist</option>
+            <option>Domain expert (health, education, policy&hellip;)</option>
+            <option>Other</option>
+          </select>
+        </label>
+      </div>
+
+      <fieldset class="field">
+        <legend>Which themes interest you?</legend>
+        <div class="checks">
+          <label><input type="checkbox" name="interests" value="open-models"> Open models and tools</label>
+          <label><input type="checkbox" name="interests" value="ai-for-people"> AI for people</label>
+          <label><input type="checkbox" name="interests" value="safety"> Safe and accountable AI</label>
+          <label><input type="checkbox" name="interests" value="embodied-efficient"> Embodied and efficient AI</label>
+        </div>
+      </fieldset>
+
+      <label class="field">
+        <span>Links (GitHub, Google Scholar, website, LinkedIn)</span>
+        <input type="text" name="links" maxlength="1000" placeholder="https://github.com/you">
+      </label>
+
+      <label class="field">
+        <span>Why do you want to join? <em>*</em></span>
+        <textarea name="motivation" required rows="5" maxlength="5000" placeholder="A few sentences is plenty."></textarea>
+      </label>
+
+      <label class="field">
+        <span>How would you like to contribute?</span>
+        <textarea name="contribution" rows="4" maxlength="5000" placeholder="Research, engineering, writing, mentoring, compute, organizing events&hellip;"></textarea>
+      </label>
+
+      <label class="check-line">
+        <input type="checkbox" name="consent" value="yes" required>
+        <span>I agree that Forall Labs can store these answers to review my application and contact me. <em>*</em></span>
+      </label>
+
+      <!-- TODO: replace with your Turnstile site key, and uncomment, when the form endpoint is live.
+      <div class="cf-turnstile" data-sitekey="YOUR-TURNSTILE-SITE-KEY"></div>
+      -->
+
+      <!-- Disabled until the form endpoint is live (GitHub Pages serves static files only).
+           To re-enable: drop the .form-disabled block and the disabled attribute. -->
+      <div class="form-disabled">
+        <p>This form is not accepting submissions yet. It goes live with <code>forall-labs.ai</code>. Until then, say hello at <a href="https://github.com/forall-labs">github.com/forall-labs</a>.</p>
+      </div>
+      <button class="btn primary" type="submit" disabled>Send application</button>
+    </form>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap fine">
+      <p class="muted">Questions? <a href="mailto:hello@forall-labs.ai">hello@forall-labs.ai</a></p>
+    </div>
+  </footer>
+</body>
+</html>

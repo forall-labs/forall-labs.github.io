@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Propose a project &middot; Forall Labs</title>
+  <meta name="description" content="Pitch a research idea to Forall Labs and find collaborators. Open to everyone, no affiliation needed.">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <!-- Cloudflare Turnstile spam check (free). Re-enable with the form endpoint.
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  -->
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="brand" href="/" aria-label="Forall Labs home">
+        <span class="mark" aria-hidden="true">&forall;</span>
+        <span class="brand-name">Forall Labs</span>
+      </a>
+      <nav aria-label="Main">
+        <a href="/#research">Research</a>
+        <a href="/#involved">Get involved</a>
+        <a href="/#about">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Interim preview notice: remove once forall-labs.ai and the form backend are live. -->
+  <div class="notice-bar">
+    <div class="wrap">
+      <p><strong>Preview.</strong> Forall Labs is being set up. The membership forms and the <code>@forall-labs.ai</code> address are not live yet &mdash; reach us at <a href="https://github.com/forall-labs">github.com/forall-labs</a> in the meantime.</p>
+    </div>
+  </div>
+
+  <main id="main" class="wrap section form-page">
+    <p class="eyebrow">Projects</p>
+    <h1 class="page-title">Propose a project</h1>
+    <p class="section-lead">Members choose the work together. Describe the idea, who it helps and what it needs, and we will share it with the community to find collaborators. You do not need an affiliation to propose one.</p>
+
+    <form class="form" method="post" action="/api/submit">
+      <input type="hidden" name="form" value="proposal">
+      <!-- Honeypot: hidden from people, bots fill it in. -->
+      <div class="hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+
+      <div class="field-row">
+        <label class="field">
+          <span>Full name <em>*</em></span>
+          <input type="text" name="name" required autocomplete="name" maxlength="200">
+        </label>
+        <label class="field">
+          <span>Email <em>*</em></span>
+          <input type="email" name="email" required autocomplete="email" maxlength="200">
+        </label>
+      </div>
+
+      <label class="field">
+        <span>Project title <em>*</em></span>
+        <input type="text" name="title" required maxlength="200" placeholder="Open evaluation suite for clinical triage models">
+      </label>
+
+      <label class="field">
+        <span>Which theme does it fit? <em>*</em></span>
+        <select name="theme" required>
+          <option value="">Choose one</option>
+          <option>Open models and tools</option>
+          <option>AI for people</option>
+          <option>Safe and accountable AI</option>
+          <option>Embodied and efficient AI</option>
+          <option>Something else</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Summary <em>*</em></span>
+        <textarea name="summary" required rows="5" maxlength="5000" placeholder="What is the idea, in a few sentences? Plain language is better than jargon."></textarea>
+      </label>
+
+      <label class="field">
+        <span>Who does it help, and how?</span>
+        <textarea name="impact" rows="4" maxlength="5000" placeholder="The people or communities who benefit, and what changes for them."></textarea>
+      </label>
+
+      <label class="field">
+        <span>What would it need?</span>
+        <textarea name="needs" rows="4" maxlength="5000" placeholder="Collaborators and skills, data, compute, a rough timeline&hellip;"></textarea>
+      </label>
+
+      <label class="field">
+        <span>Prior work or links</span>
+        <input type="text" name="links" maxlength="1000" placeholder="https://arxiv.org/abs/... , https://github.com/...">
+      </label>
+
+      <label class="check-line">
+        <input type="checkbox" name="open_sharing" value="yes">
+        <span>I am happy for this proposal to be shared openly with the community so collaborators can find it.</span>
+      </label>
+
+      <label class="check-line">
+        <input type="checkbox" name="consent" value="yes" required>
+        <span>I agree that Forall Labs can store these answers to review the proposal and contact me. <em>*</em></span>
+      </label>
+
+      <!-- TODO: replace with your Turnstile site key, and uncomment, when the form endpoint is live.
+      <div class="cf-turnstile" data-sitekey="YOUR-TURNSTILE-SITE-KEY"></div>
+      -->
+
+      <!-- Disabled until the form endpoint is live (GitHub Pages serves static files only).
+           To re-enable: drop the .form-disabled block and the disabled attribute. -->
+      <div class="form-disabled">
+        <p>This form is not accepting submissions yet. It goes live with <code>forall-labs.ai</code>. Until then, say hello at <a href="https://github.com/forall-labs">github.com/forall-labs</a>.</p>
+      </div>
+      <button class="btn primary" type="submit" disabled>Send proposal</button>
+    </form>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap fine">
+      <p class="muted">Questions? <a href="mailto:hello@forall-labs.ai">hello@forall-labs.ai</a></p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,43 +1,15 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Join Forall Labs</title>
-  <meta name="description" content="Apply to join Forall Labs, an independent, non-profit, open research community in AI.">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/styles.css">
-  <!-- Cloudflare Turnstile spam check (free). Re-enable with the form endpoint.
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-  -->
-</head>
-<body>
-  <header class="site-header">
-    <div class="wrap header-row">
-      <a class="brand" href="/" aria-label="Forall Labs home">
-        <span class="mark" aria-hidden="true">&forall;</span>
-        <span class="brand-name">Forall Labs</span>
-      </a>
-      <nav aria-label="Main">
-        <a href="/#research">Research</a>
-        <a href="/#involved">Get involved</a>
-        <a href="/#about">About</a>
-      </nav>
-    </div>
-  </header>
+<!-- {"url": "/apply/", "title": "Become a member — Forall Labs", "nav": "/join/", "description": "Apply to join Forall Labs. Membership is free and open to everyone, with no affiliation required."} -->
 
-  <!-- Interim preview notice: remove once forall-labs.ai and the form backend are live. -->
-  <div class="notice-bar">
-    <div class="wrap">
-      <p><strong>Preview.</strong> Forall Labs is being set up. The membership forms and the <code>@forall-labs.ai</code> address are not live yet &mdash; reach us at <a href="https://github.com/forall-labs">github.com/forall-labs</a> in the meantime.</p>
-    </div>
-  </div>
-
-  <main id="main" class="wrap section form-page">
+<section class="page-head">
+  <div class="wrap">
     <p class="eyebrow">Membership</p>
-    <h1 class="page-title">Join Forall Labs</h1>
-    <p class="section-lead">Membership is free and open to everyone. Tell us a little about yourself so we can connect you with the right projects. It takes about five minutes.</p>
+    <h1>Become a member.</h1>
+    <p class="lead">Membership is free and open to everyone. Tell us a little about yourself so we can connect you with the right projects. It takes about five minutes, and nothing here asks for an affiliation.</p>
+  </div>
+</section>
 
+<section class="section">
+  <div class="wrap">
     <form class="form" method="post" action="/api/submit">
       <input type="hidden" name="form" value="application">
       <!-- Honeypot: hidden from people, bots fill it in. -->
@@ -95,7 +67,7 @@
 
       <label class="field">
         <span>How would you like to contribute?</span>
-        <textarea name="contribution" rows="4" maxlength="5000" placeholder="Research, engineering, writing, mentoring, compute, organizing events&hellip;"></textarea>
+        <textarea name="contribution" rows="4" maxlength="5000" placeholder="Research, engineering, writing, mentoring, compute, organising events&hellip;"></textarea>
       </label>
 
       <label class="check-line">
@@ -107,19 +79,12 @@
       <div class="cf-turnstile" data-sitekey="YOUR-TURNSTILE-SITE-KEY"></div>
       -->
 
-      <!-- Disabled until the form endpoint is live (GitHub Pages serves static files only).
-           To re-enable: drop the .form-disabled block and the disabled attribute. -->
+      <!-- Disabled until the form endpoint is live: GitHub Pages serves static files only.
+           To re-enable: delete the .form-disabled block and the disabled attribute. -->
       <div class="form-disabled">
-        <p>This form is not accepting submissions yet. It goes live with <code>forall-labs.ai</code>. Until then, say hello at <a href="https://github.com/forall-labs">github.com/forall-labs</a>.</p>
+        <p><strong>Not accepting submissions yet.</strong> This form goes live with <code>forall-labs.ai</code>. Until then, open an issue on <a href="https://github.com/forall-labs">GitHub</a> and say hello &mdash; it reaches the same person.</p>
       </div>
-      <button class="btn primary" type="submit" disabled>Send application</button>
+      <div class="actions"><button class="btn primary" type="submit" disabled>Send application</button></div>
     </form>
-  </main>
-
-  <footer class="site-footer">
-    <div class="wrap fine">
-      <p class="muted">Questions? <a href="mailto:hello@forall-labs.ai">hello@forall-labs.ai</a></p>
-    </div>
-  </footer>
-</body>
-</html>
+  </div>
+</section>

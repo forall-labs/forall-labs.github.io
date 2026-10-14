@@ -1,43 +1,15 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Propose a project &middot; Forall Labs</title>
-  <meta name="description" content="Pitch a research idea to Forall Labs and find collaborators. Open to everyone, no affiliation needed.">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/styles.css">
-  <!-- Cloudflare Turnstile spam check (free). Re-enable with the form endpoint.
-  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-  -->
-</head>
-<body>
-  <header class="site-header">
-    <div class="wrap header-row">
-      <a class="brand" href="/" aria-label="Forall Labs home">
-        <span class="mark" aria-hidden="true">&forall;</span>
-        <span class="brand-name">Forall Labs</span>
-      </a>
-      <nav aria-label="Main">
-        <a href="/#research">Research</a>
-        <a href="/#involved">Get involved</a>
-        <a href="/#about">About</a>
-      </nav>
-    </div>
-  </header>
+<!-- {"url": "/propose/", "title": "Propose a project — Forall Labs", "nav": "/join/", "description": "Pitch a research idea to Forall Labs and find collaborators. Open to everyone, no affiliation needed."} -->
 
-  <!-- Interim preview notice: remove once forall-labs.ai and the form backend are live. -->
-  <div class="notice-bar">
-    <div class="wrap">
-      <p><strong>Preview.</strong> Forall Labs is being set up. The membership forms and the <code>@forall-labs.ai</code> address are not live yet &mdash; reach us at <a href="https://github.com/forall-labs">github.com/forall-labs</a> in the meantime.</p>
-    </div>
-  </div>
-
-  <main id="main" class="wrap section form-page">
+<section class="page-head">
+  <div class="wrap">
     <p class="eyebrow">Projects</p>
-    <h1 class="page-title">Propose a project</h1>
-    <p class="section-lead">Members choose the work together. Describe the idea, who it helps and what it needs, and we will share it with the community to find collaborators. You do not need an affiliation to propose one.</p>
+    <h1>Propose a project.</h1>
+    <p class="lead">Members choose the work together. Describe the idea, who it helps and what it needs, and we will share it with the community to find collaborators. You do not need to be a member first.</p>
+  </div>
+</section>
 
+<section class="section">
+  <div class="wrap">
     <form class="form" method="post" action="/api/submit">
       <input type="hidden" name="form" value="proposal">
       <!-- Honeypot: hidden from people, bots fill it in. -->
@@ -105,19 +77,11 @@
       <div class="cf-turnstile" data-sitekey="YOUR-TURNSTILE-SITE-KEY"></div>
       -->
 
-      <!-- Disabled until the form endpoint is live (GitHub Pages serves static files only).
-           To re-enable: drop the .form-disabled block and the disabled attribute. -->
+      <!-- Disabled until the form endpoint is live: GitHub Pages serves static files only. -->
       <div class="form-disabled">
-        <p>This form is not accepting submissions yet. It goes live with <code>forall-labs.ai</code>. Until then, say hello at <a href="https://github.com/forall-labs">github.com/forall-labs</a>.</p>
+        <p><strong>Not accepting submissions yet.</strong> This form goes live with <code>forall-labs.ai</code>. Until then, open an issue on <a href="https://github.com/forall-labs">GitHub</a> with your idea &mdash; it reaches the same person.</p>
       </div>
-      <button class="btn primary" type="submit" disabled>Send proposal</button>
+      <div class="actions"><button class="btn primary" type="submit" disabled>Send proposal</button></div>
     </form>
-  </main>
-
-  <footer class="site-footer">
-    <div class="wrap fine">
-      <p class="muted">Questions? <a href="mailto:hello@forall-labs.ai">hello@forall-labs.ai</a></p>
-    </div>
-  </footer>
-</body>
-</html>
+  </div>
+</section>

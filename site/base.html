@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{title}}</title>
+  <meta name="description" content="{{description}}">
+  <link rel="canonical" href="{{base}}{{url}}">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="theme-color" content="#f6f4ef" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#101114" media="(prefers-color-scheme: dark)">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Forall Labs">
+  <meta property="og:title" content="{{og_title}}">
+  <meta property="og:description" content="{{description}}">
+  <meta property="og:url" content="{{base}}{{url}}">
+  <meta property="og:image" content="{{base}}/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="brand" href="/" aria-label="Forall Labs home">
+        <span class="mark" aria-hidden="true">&forall;</span>
+        <span class="brand-name">Forall Labs</span>
+      </a>
+      <nav class="nav" aria-label="Main">
+{{nav}}
+      </nav>
+      <details class="menu">
+        <summary aria-label="Menu"><span></span></summary>
+        <div class="menu-panel">
+          <nav class="nav" aria-label="Main, mobile">
+{{nav}}
+          </nav>
+        </div>
+      </details>
+    </div>
+  </header>
+
+  <!-- Interim preview notice: remove once forall-labs.ai and the form endpoint are live. -->
+  <div class="notice-bar">
+    <div class="wrap">
+      <p><strong>Preview.</strong> Forall Labs is getting started. Membership forms and <code>@forall-labs.ai</code> email are not live yet &mdash; find us on <a href="https://github.com/forall-labs">GitHub</a> meanwhile.</p>
+    </div>
+  </div>
+
+  <main id="main">
+{{content}}
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <a class="brand" href="/" aria-label="Forall Labs home">
+            <span class="mark" aria-hidden="true">&forall;</span>
+            <span class="brand-name">Forall Labs</span>
+          </a>
+          <p>An independent, non-profit, open research community in AI. Based in Toronto, open to everyone.</p>
+        </div>
+        <div>
+          <h4>Research</h4>
+          <ul>
+            <li><a href="/research/">Our themes</a></li>
+            <li><a href="/projects/">Projects</a></li>
+            <li><a href="/news/">News &amp; writing</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Community</h4>
+          <ul>
+            <li><a href="/join/">Get involved</a></li>
+            <li><a href="/apply/">Become a member</a></li>
+            <li><a href="/propose/">Propose a project</a></li>
+            <li><a href="/people/">People</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Elsewhere</h4>
+          <ul>
+            <li><a href="https://github.com/forall-labs">GitHub</a></li>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/about/#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Forall Labs. Text licensed <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.</p>
+        <p>&forall; is the mathematical symbol for &ldquo;for all&rdquo;.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

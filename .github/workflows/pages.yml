@@ -1,6 +1,7 @@
-# Publishes public/ to GitHub Pages on every push to main.
-# The site keeps its Cloudflare Pages layout (public/ + functions/) so moving to
-# Cloudflare later, once forall-labs.ai is bought, needs no restructuring.
+# Builds site/ into public/ and publishes it to GitHub Pages on every push to main.
+# public/ is generated, so it is not committed; CI builds it fresh each time.
+# The output layout (public/ + functions/) is the Cloudflare Pages one, so moving
+# to Cloudflare once forall-labs.ai is bought needs no restructuring.
 name: Deploy to GitHub Pages
 
 on:
@@ -25,6 +26,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Build the site
+        run: python3 tools/build.py
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

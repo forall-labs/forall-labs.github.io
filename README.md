@@ -18,6 +18,8 @@ site/base.html          the shared chrome: head, header, nav, notice bar, footer
 site/pages/*.html       one file per page; first line is a JSON header
 site/static/*           copied to the site root as-is (CSS, favicon, og image, robots.txt)
 tools/build.py          site/ -> public/
+tools/logo.py           draws the ∀L mark: favicon.svg, logo.svg, the symbol in base.html
+tools/og.html           source for og.png (screenshot at 1200x630)
 public/                 generated output, git-ignored, rebuilt by CI on every deploy
 functions/api/submit.js Cloudflare Pages Function for the forms (unused on GitHub Pages)
 schema.sql              creates the submissions table in the D1 database

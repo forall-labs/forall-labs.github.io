@@ -4,3 +4,4 @@ public/
 .DS_Store
 node_modules/
 .wrangler/
+__pycache__/

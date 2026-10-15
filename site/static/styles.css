@@ -9,7 +9,8 @@
 /* --- Tokens --------------------------------------------------------------- */
 
 :root {
-  /* Warm ivory ground, clay accent, almost no hard black. */
+  /* Warm ivory ground, ink-blue accent, almost no hard black. The blue sits at
+     the same muted saturation as the ground so it reads as ink, not as UI chrome. */
   --bg:          #faf9f5;
   --bg-sunk:     #f1efe7;
   --bg-raised:   #ffffff;
@@ -18,9 +19,9 @@
   --text-faint:  #918f89;
   --line:        #e4e1d8;
   --line-soft:   #edebe3;
-  --accent:      #c25f3e;
-  --accent-deep: #a44a2c;
-  --accent-wash: #f7ece6;
+  --accent:      #3769ae;
+  --accent-deep: #2b5794;
+  --accent-wash: #ebeff5;
   --accent-ink:  #ffffff;
 
   --wrap:   1200px;
@@ -48,7 +49,7 @@
 }
 
 :root[data-theme="dark"] {
-  /* Warm charcoal rather than black, so the clay accent still reads. */
+  /* Warm charcoal rather than black; the accent lifts to a soft periwinkle. */
   --bg:          #21201d;
   --bg-sunk:     #1a1917;
   --bg-raised:   #2a2926;
@@ -57,9 +58,9 @@
   --text-faint:  #8a8880;
   --line:        #3a3834;
   --line-soft:   #302e2b;
-  --accent:      #dc7f5c;
-  --accent-deep: #e89878;
-  --accent-wash: #2f241e;
+  --accent:      #86a9e0;
+  --accent-deep: #a6c0ea;
+  --accent-wash: #222832;
   --accent-ink:  #1a1917;
 }
 
@@ -136,12 +137,8 @@ code, kbd { font-family: var(--mono); font-size: 0.88em; }
 .header-row { display: flex; align-items: center; justify-content: space-between; gap: var(--s-3); min-height: 74px; }
 
 .brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; }
-.brand .mark {
-  display: grid; place-items: center;
-  width: 32px; height: 32px; border-radius: 9px;
-  background: var(--accent); color: var(--accent-ink);
-  font-size: 20px; line-height: 1; font-family: var(--serif);
-}
+/* Ink, like the wordmark beside it; the blue is kept for actions. */
+.brand .mark { width: 27px; height: 24px; flex: none; color: var(--text); }
 .brand .brand-name { font-family: var(--serif); font-size: 1.28rem; letter-spacing: -0.02em; }
 
 .header-tools { display: flex; align-items: center; gap: var(--s-1); }

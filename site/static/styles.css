@@ -138,7 +138,7 @@ code, kbd { font-family: var(--mono); font-size: 0.88em; }
 
 .brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; }
 /* Ink, like the wordmark beside it; the blue is kept for actions. */
-.brand .mark { width: 27px; height: 24px; flex: none; color: var(--text); }
+.brand .mark { width: 25px; height: 24px; flex: none; color: var(--text); }
 .brand .brand-name { font-family: var(--serif); font-size: 1.28rem; letter-spacing: -0.02em; }
 
 .header-tools { display: flex; align-items: center; gap: var(--s-1); }

@@ -16,7 +16,7 @@ BAR_Y = 47.0
 GAP = 21.0      # horizontal offset of the L's stem from the ∀'s right leg
 
 VIEWBOX = "2.77 14 75.46 72"   # tight around the ink, so it sits flush with type
-BLUE, IVORY, INK = "#3769ae", "#faf9f5", "#141413"
+INK, WHITE = "#141413", "#ffffff"
 STATIC = Path(__file__).resolve().parent.parent / "site" / "static"
 
 
@@ -69,6 +69,6 @@ if __name__ == "__main__":
     if "--symbol" in sys.argv:
         print(symbol())
     else:
-        (STATIC / "favicon.svg").write_text(svg(IVORY, tile=BLUE))
+        (STATIC / "favicon.svg").write_text(svg(WHITE, tile=INK))
         (STATIC / "logo.svg").write_text(svg(INK))
         print("wrote favicon.svg, logo.svg")

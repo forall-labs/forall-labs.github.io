@@ -17,6 +17,10 @@ ROOT = Path(__file__).resolve().parent.parent
 SITE = ROOT / "site"
 OUT = ROOT / "public"
 BASE_URL = "https://forall-labs.github.io"
+# Every form posts here. FormSubmit relays submissions by email, which is what
+# lets forms work on GitHub Pages with no server of our own. After the address
+# is activated, FormSubmit offers a random alias that can replace the email.
+FORM_ACTION = "https://formsubmit.co/sj.pakdaman.edu@gmail.com"
 
 # Order matters: this is the nav, left to right.
 NAV = [
@@ -86,6 +90,7 @@ def main():
                 .replace("{{title}}", meta["title"])
                 .replace("{{og_title}}", meta.get("og_title", meta["title"]))
                 .replace("{{description}}", meta["description"])
+                .replace("{{form_action}}", FORM_ACTION)
                 .replace("{{base}}", BASE_URL)
                 .replace("{{url}}", meta["url"]))
         dest = out_path(meta["url"])

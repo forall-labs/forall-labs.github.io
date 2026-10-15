@@ -1,12 +1,10 @@
 # Forall Labs website
 
-The site for [Forall Labs](https://forall-labs.github.io) — an independent, non-profit,
-open research community in AI.
+The site for [Forall Labs](https://forall-labs.github.io), an open research community in AI.
 
-**Live now:** https://forall-labs.github.io (GitHub Pages, free, static only).
-**Later:** Cloudflare Pages at `forall-labs.ai` once the domain is bought, which is what
-turns the forms on. The build output layout is already the Cloudflare one, so that move
-is a settings change rather than a rewrite.
+**Live:** https://forall-labs.github.io, on GitHub Pages (free, static files only). The
+forms work through [FormSubmit](https://formsubmit.co), which emails each submission, so
+no server of our own is needed.
 
 ## How it is built
 
@@ -14,15 +12,13 @@ A small Python generator drops each page into one shared template, so the header
 footer are defined once instead of being copy-pasted into a dozen files.
 
 ```
-site/base.html          the shared chrome: head, header, nav, notice bar, footer
+site/base.html          the shared chrome: head, header, nav, footer
 site/pages/*.html       one file per page; first line is a JSON header
-site/static/*           copied to the site root as-is (CSS, favicon, og image, robots.txt)
+site/static/*           copied to the site root as-is (CSS, forms.js, favicon, og image)
 tools/build.py          site/ -> public/
 tools/logo.py           draws the ∀L mark: favicon.svg, logo.svg, the symbol in base.html
 tools/og.html           source for og.png (screenshot at 1200x630)
 public/                 generated output, git-ignored, rebuilt by CI on every deploy
-functions/api/submit.js Cloudflare Pages Function for the forms (unused on GitHub Pages)
-schema.sql              creates the submissions table in the D1 database
 ```
 
 Build it:
@@ -40,7 +36,7 @@ Create `site/pages/<name>.html` with a JSON header on the first line, then write
 `build.py` picks it up automatically and adds it to the sitemap.
 
 ```html
-<!-- {"url": "/fellowships/", "title": "Fellowships — Forall Labs", "description": "One sentence for search results and link previews."} -->
+<!-- {"url": "/fellowships/", "title": "Fellowships | Forall Labs", "description": "One sentence for search results and link previews."} -->
 
 <section class="page-head">
   <div class="wrap">
@@ -68,56 +64,32 @@ A post is just a page: `site/pages/news-<slug>.html` with `"url": "/news/<slug>/
 
 ## Writing style
 
-- The name is **Forall Labs** — never `ForAll`.
-- The tagline is **"Open research in AI, for all of humanity"** — never "open AI research",
+Plain, confident and short, in the spirit of anthropic.com.
+
+- The name is **Forall Labs**, never `ForAll`.
+- The tagline is **"Open research in AI, for all of humanity"**. Never "open AI research",
   which reads as OpenAI.
+- **No em or en dashes anywhere** (`—`, `–`, `&mdash;`, `&ndash;`). Use a full stop, a colon
+  or a comma. Page titles are `Page | Forall Labs`. Check with
+  `grep -rn "—\|–\|&mdash;\|&ndash;" site/`.
+- Do not lead with how new the lab is. The founding year (2026, no month) appears on the
+  About page only. Toronto is mentioned on About, not in the intro.
 
-## What does not work on GitHub Pages
+## Forms
 
-`functions/api/submit.js` is a Cloudflare Pages Function. GitHub Pages serves static files
-only, so `POST /api/submit` does not exist there. The two form pages ship with their submit
-buttons disabled, and a `.notice-bar` banner on every page says so to visitors.
+Every form posts to `FORM_ACTION` in `tools/build.py`, a [FormSubmit](https://formsubmit.co)
+address. Pages write `action="{{form_action}}"` and the build fills it in.
 
-To accept submissions before the domain is ready, point both forms at a free third-party
-endpoint (Formspree, Tally, a Google Form) by changing one `action=` attribute per page, and
-remove the `disabled` attribute and the `.form-disabled` block.
-
-## Before launch, replace these placeholders
-
-Search the project for `TODO`:
-
-- the Discord invite — five links currently point at the GitHub organisation instead
-- the Hugging Face organisation link in the footer, commented out until the org is claimed
-- `YOUR-TURNSTILE-SITE-KEY` in `apply.html` and `propose.html`, commented out with the widget
-
-## Moving to Cloudflare once forall-labs.ai is bought
-
-1. **Database:** Cloudflare dashboard → Storage & Databases → D1 → Create, name it
-   `forall-labs-db`. Open its Console tab, paste `schema.sql`, and run it.
-2. **Spam protection:** Cloudflare dashboard → Turnstile → Add widget for `forall-labs.ai`
-   (add your `*.pages.dev` hostname too while testing). The **site key** goes in the two form
-   pages; keep the **secret key** for step 4.
-3. **Pages project:** Workers & Pages → Create → Pages → Connect to Git → pick this repo.
-   - Framework preset: **None**
-   - Build command: `python3 tools/build.py`
-   - Build output directory: `public`
-4. **Settings:** Bindings → add **D1 database**, variable name `DB`, database `forall-labs-db`.
-   Variables and Secrets → add `TURNSTILE_SECRET_KEY`, and optionally `DISCORD_WEBHOOK_URL`.
-   Redeploy so the settings take effect.
-5. **Domain:** Custom domains → add `forall-labs.ai` and `www.forall-labs.ai`.
-6. **Turn the forms on:** remove the `disabled` attribute and the `.form-disabled` block from
-   `site/pages/apply.html` and `site/pages/propose.html`, uncomment the Turnstile widget and
-   script, and remove the `.notice-bar` block from `site/base.html`.
-7. **Swap the base URL:** `BASE_URL` in `tools/build.py`, and the `Sitemap:` line in
-   `site/static/robots.txt`.
-8. **Test:** send yourself an application, then in the D1 Console run
-   `SELECT * FROM submissions ORDER BY id DESC LIMIT 5;`
-
-## Reviewing submissions
-
-- Quick look: D1 Console in the Cloudflare dashboard (queries are at the bottom of `schema.sql`).
-- Export: `npx wrangler d1 export forall-labs-db --remote --output=submissions.sql`.
-- Later: a private `/admin` page behind Cloudflare Access (free for small teams).
+- `site/static/forms.js` sends the form in the background and swaps it for the
+  confirmation panel named by the form's `data-success` attribute. Without JavaScript the
+  form posts normally and FormSubmit redirects to `/thanks/`.
+- Hidden fields: `_subject` (email subject), `_template`, `_next` (no-JS redirect),
+  `_autoresponse` (the copy sent to the person who submitted), `_honey` (spam trap).
+- `/contact/?topic=support` preselects the option with `data-topic="support"`.
+- **First use:** FormSubmit emails an activation link to the address the first time a form
+  is sent. Until it is clicked, submissions are rejected and the form shows its error
+  message. After activating, FormSubmit offers a random alias; put it in `FORM_ACTION` to
+  keep the address out of the page source.
 
 ## Licence
 

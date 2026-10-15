@@ -1,7 +1,5 @@
 # Builds site/ into public/ and publishes it to GitHub Pages on every push to main.
 # public/ is generated, so it is not committed; CI builds it fresh each time.
-# The output layout (public/ + functions/) is the Cloudflare Pages one, so moving
-# to Cloudflare once forall-labs.ai is bought needs no restructuring.
 name: Deploy to GitHub Pages
 
 on:

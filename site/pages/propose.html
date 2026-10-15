@@ -1,4 +1,4 @@
-<!-- {"url": "/propose/", "title": "Propose a project — Forall Labs", "nav": "/join/", "description": "Pitch a research idea to Forall Labs and find collaborators. Open to everyone, no affiliation needed."} -->
+<!-- {"url": "/propose/", "title": "Propose a project | Forall Labs", "nav": "/join/", "description": "Pitch a research idea to Forall Labs and find collaborators. Open to everyone, no affiliation needed."} -->
 
 <section class="page-head">
   <div class="wrap">
@@ -8,80 +8,101 @@
   </div>
 </section>
 
-<section class="section">
-  <div class="wrap">
-    <form class="form" method="post" action="/api/submit">
-      <input type="hidden" name="form" value="proposal">
-      <!-- Honeypot: hidden from people, bots fill it in. -->
-      <div class="hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+<section class="section" style="padding-top: 0">
+  <div class="wrap form-layout">
+    <aside class="form-aside">
+      <h2>What happens next</h2>
+      <ol>
+        <li><span><strong>We read it closely.</strong>If something is unclear, we write back with questions rather than a rejection.</span></li>
+        <li><span><strong>It goes to the community.</strong>With your permission, the proposal is shared so members can sign up to help.</span></li>
+        <li><span><strong>A team forms.</strong>Once at least two people commit to owning parts of it, the project starts in the open.</span></li>
+      </ol>
+      <p class="meta">Not sure your idea fits? Read <a href="/research/#choose">how we choose projects</a>.</p>
+    </aside>
 
-      <div class="field-row">
+    <div>
+      <form class="form" data-form data-success="propose-done" method="post" action="{{form_action}}">
+        <input type="hidden" name="_subject" value="Forall Labs: project proposal">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://forall-labs.github.io/thanks/">
+        <input type="hidden" name="_autoresponse" value="Thank you for proposing a project to Forall Labs. We read every proposal and will reply by email. Forall Labs">
+        <!-- Honeypot: hidden from people, bots fill it in. -->
+        <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
+
+        <div class="field-row">
+          <label class="field">
+            <span>Full name <em>*</em></span>
+            <input type="text" name="name" required autocomplete="name" maxlength="200">
+          </label>
+          <label class="field">
+            <span>Email <em>*</em></span>
+            <input type="email" name="email" required autocomplete="email" maxlength="200">
+          </label>
+        </div>
+
         <label class="field">
-          <span>Full name <em>*</em></span>
-          <input type="text" name="name" required autocomplete="name" maxlength="200">
+          <span>Project title <em>*</em></span>
+          <input type="text" name="title" required maxlength="200" placeholder="Open evaluation suite for clinical triage models">
         </label>
+
         <label class="field">
-          <span>Email <em>*</em></span>
-          <input type="email" name="email" required autocomplete="email" maxlength="200">
+          <span>Which theme does it fit? <em>*</em></span>
+          <select name="theme" required>
+            <option value="">Choose one</option>
+            <option>Open models and tools</option>
+            <option>AI for people</option>
+            <option>Safe and accountable AI</option>
+            <option>Embodied and efficient AI</option>
+            <option>Something else</option>
+          </select>
         </label>
+
+        <label class="field">
+          <span>Summary <em>*</em></span>
+          <textarea name="summary" required rows="5" maxlength="5000" placeholder="What is the idea, in a few sentences? Plain language is better than jargon."></textarea>
+        </label>
+
+        <label class="field">
+          <span>Who does it help, and how?</span>
+          <textarea name="impact" rows="4" maxlength="5000" placeholder="The people or communities who benefit, and what changes for them."></textarea>
+        </label>
+
+        <label class="field">
+          <span>What would it need?</span>
+          <textarea name="needs" rows="4" maxlength="5000" placeholder="Collaborators and skills, data, compute, a rough timeline&hellip;"></textarea>
+        </label>
+
+        <label class="field">
+          <span>Prior work or links</span>
+          <input type="text" name="links" maxlength="1000" placeholder="Papers, repositories, datasets">
+        </label>
+
+        <label class="check-line">
+          <input type="checkbox" name="share_openly" value="Yes">
+          <span>I am happy for this proposal to be shared openly with the community so collaborators can find it.</span>
+        </label>
+
+        <label class="check-line">
+          <input type="checkbox" name="consent" value="Yes" required>
+          <span>I agree that Forall Labs can store these answers to review the proposal and contact me. <em>*</em></span>
+        </label>
+
+        <p class="form-error" role="alert" hidden>Your proposal could not be sent. Please try again in a moment, or reach us through <a href="https://github.com/forall-labs">GitHub</a>.</p>
+        <div class="actions">
+          <button class="btn primary" type="submit">Send proposal</button>
+          <p class="form-note">Fields marked <em>*</em> are required.</p>
+        </div>
+      </form>
+
+      <div class="form-success" id="propose-done" tabindex="-1" hidden>
+        <div class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></div>
+        <h2>Proposal received.</h2>
+        <p>Thank you. We read every proposal and will reply by email with next steps or questions. A copy of this confirmation is on its way to your inbox.</p>
+        <div class="actions">
+          <a class="btn primary" href="/projects/">How projects run</a>
+          <a class="btn" href="/apply/">Become a member</a>
+        </div>
       </div>
-
-      <label class="field">
-        <span>Project title <em>*</em></span>
-        <input type="text" name="title" required maxlength="200" placeholder="Open evaluation suite for clinical triage models">
-      </label>
-
-      <label class="field">
-        <span>Which theme does it fit? <em>*</em></span>
-        <select name="theme" required>
-          <option value="">Choose one</option>
-          <option>Open models and tools</option>
-          <option>AI for people</option>
-          <option>Safe and accountable AI</option>
-          <option>Embodied and efficient AI</option>
-          <option>Something else</option>
-        </select>
-      </label>
-
-      <label class="field">
-        <span>Summary <em>*</em></span>
-        <textarea name="summary" required rows="5" maxlength="5000" placeholder="What is the idea, in a few sentences? Plain language is better than jargon."></textarea>
-      </label>
-
-      <label class="field">
-        <span>Who does it help, and how?</span>
-        <textarea name="impact" rows="4" maxlength="5000" placeholder="The people or communities who benefit, and what changes for them."></textarea>
-      </label>
-
-      <label class="field">
-        <span>What would it need?</span>
-        <textarea name="needs" rows="4" maxlength="5000" placeholder="Collaborators and skills, data, compute, a rough timeline&hellip;"></textarea>
-      </label>
-
-      <label class="field">
-        <span>Prior work or links</span>
-        <input type="text" name="links" maxlength="1000" placeholder="https://arxiv.org/abs/... , https://github.com/...">
-      </label>
-
-      <label class="check-line">
-        <input type="checkbox" name="open_sharing" value="yes">
-        <span>I am happy for this proposal to be shared openly with the community so collaborators can find it.</span>
-      </label>
-
-      <label class="check-line">
-        <input type="checkbox" name="consent" value="yes" required>
-        <span>I agree that Forall Labs can store these answers to review the proposal and contact me. <em>*</em></span>
-      </label>
-
-      <!-- TODO: replace with your Turnstile site key, and uncomment, when the form endpoint is live.
-      <div class="cf-turnstile" data-sitekey="YOUR-TURNSTILE-SITE-KEY"></div>
-      -->
-
-      <!-- Disabled until the form endpoint is live: GitHub Pages serves static files only. -->
-      <div class="form-disabled">
-        <p><strong>Not accepting submissions yet.</strong> This form goes live with <code>forall-labs.ai</code>. Until then, open an issue on <a href="https://github.com/forall-labs">GitHub</a> with your idea &mdash; it reaches the same person.</p>
-      </div>
-      <div class="actions"><button class="btn primary" type="submit" disabled>Send proposal</button></div>
-    </form>
+    </div>
   </div>
 </section>

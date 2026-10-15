@@ -1,90 +1,110 @@
-<!-- {"url": "/apply/", "title": "Become a member — Forall Labs", "nav": "/join/", "description": "Apply to join Forall Labs. Membership is free and open to everyone, with no affiliation required."} -->
+<!-- {"url": "/apply/", "title": "Become a member | Forall Labs", "nav": "/join/", "description": "Apply to join Forall Labs. Membership is free and open to everyone, with no affiliation required."} -->
 
 <section class="page-head">
   <div class="wrap">
     <p class="eyebrow">Membership</p>
     <h1>Become a member.</h1>
-    <p class="lead">Membership is free and open to everyone. Tell us a little about yourself so we can connect you with the right projects. It takes about five minutes, and nothing here asks for an affiliation.</p>
+    <p class="lead">Membership is free and open to everyone. Tell us a little about yourself and we will connect you with the right projects. It takes about five minutes, and nothing here asks for an affiliation.</p>
   </div>
 </section>
 
-<section class="section">
-  <div class="wrap">
-    <form class="form" method="post" action="/api/submit">
-      <input type="hidden" name="form" value="application">
-      <!-- Honeypot: hidden from people, bots fill it in. -->
-      <div class="hp" aria-hidden="true"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+<section class="section" style="padding-top: 0">
+  <div class="wrap form-layout">
+    <aside class="form-aside">
+      <h2>What happens next</h2>
+      <ol>
+        <li><span><strong>We read every application.</strong>A person reviews it, not a filter.</span></li>
+        <li><span><strong>We reply by email.</strong>Usually within two weeks, with an invitation to the community.</span></li>
+        <li><span><strong>You pick where to start.</strong>The reading group, an open project, or a proposal of your own.</span></li>
+      </ol>
+      <p class="meta">Questions first? <a href="/contact/">Contact us</a>.</p>
+    </aside>
 
-      <div class="field-row">
-        <label class="field">
-          <span>Full name <em>*</em></span>
-          <input type="text" name="name" required autocomplete="name" maxlength="200">
-        </label>
-        <label class="field">
-          <span>Email <em>*</em></span>
-          <input type="email" name="email" required autocomplete="email" maxlength="200">
-        </label>
-      </div>
+    <div>
+      <form class="form" data-form data-success="apply-done" method="post" action="{{form_action}}">
+        <input type="hidden" name="_subject" value="Forall Labs: membership application">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://forall-labs.github.io/thanks/">
+        <input type="hidden" name="_autoresponse" value="Thank you for applying to join Forall Labs. We read every application and will reply by email. Forall Labs">
+        <!-- Honeypot: hidden from people, bots fill it in. -->
+        <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
 
-      <div class="field-row">
-        <label class="field">
-          <span>City and country</span>
-          <input type="text" name="location" maxlength="200" placeholder="Toronto, Canada">
-        </label>
-        <label class="field">
-          <span>You are mainly a&hellip; <em>*</em></span>
-          <select name="role" required>
-            <option value="">Choose one</option>
-            <option>Student</option>
-            <option>Independent researcher</option>
-            <option>Academic researcher</option>
-            <option>Industry engineer or scientist</option>
-            <option>Domain expert (health, education, policy&hellip;)</option>
-            <option>Other</option>
-          </select>
-        </label>
-      </div>
-
-      <fieldset class="field">
-        <legend>Which themes interest you?</legend>
-        <div class="checks">
-          <label><input type="checkbox" name="interests" value="open-models"> Open models and tools</label>
-          <label><input type="checkbox" name="interests" value="ai-for-people"> AI for people</label>
-          <label><input type="checkbox" name="interests" value="safety"> Safe and accountable AI</label>
-          <label><input type="checkbox" name="interests" value="embodied-efficient"> Embodied and efficient AI</label>
+        <div class="field-row">
+          <label class="field">
+            <span>Full name <em>*</em></span>
+            <input type="text" name="name" required autocomplete="name" maxlength="200">
+          </label>
+          <label class="field">
+            <span>Email <em>*</em></span>
+            <input type="email" name="email" required autocomplete="email" maxlength="200">
+          </label>
         </div>
-      </fieldset>
 
-      <label class="field">
-        <span>Links (GitHub, Google Scholar, website, LinkedIn)</span>
-        <input type="text" name="links" maxlength="1000" placeholder="https://github.com/you">
-      </label>
+        <div class="field-row">
+          <label class="field">
+            <span>City and country</span>
+            <input type="text" name="location" maxlength="200" autocomplete="address-level2">
+          </label>
+          <label class="field">
+            <span>You are mainly a&hellip; <em>*</em></span>
+            <select name="role" required>
+              <option value="">Choose one</option>
+              <option>Student</option>
+              <option>Independent researcher</option>
+              <option>Academic researcher</option>
+              <option>Industry engineer or scientist</option>
+              <option>Domain expert (health, education, policy&hellip;)</option>
+              <option>Other</option>
+            </select>
+          </label>
+        </div>
 
-      <label class="field">
-        <span>Why do you want to join? <em>*</em></span>
-        <textarea name="motivation" required rows="5" maxlength="5000" placeholder="A few sentences is plenty."></textarea>
-      </label>
+        <fieldset class="field">
+          <legend>Which themes interest you?</legend>
+          <div class="checks">
+            <label><input type="checkbox" name="interests" value="Open models and tools"> Open models and tools</label>
+            <label><input type="checkbox" name="interests" value="AI for people"> AI for people</label>
+            <label><input type="checkbox" name="interests" value="Safe and accountable AI"> Safe and accountable AI</label>
+            <label><input type="checkbox" name="interests" value="Embodied and efficient AI"> Embodied and efficient AI</label>
+          </div>
+        </fieldset>
 
-      <label class="field">
-        <span>How would you like to contribute?</span>
-        <textarea name="contribution" rows="4" maxlength="5000" placeholder="Research, engineering, writing, mentoring, compute, organising events&hellip;"></textarea>
-      </label>
+        <label class="field">
+          <span>Links</span>
+          <input type="text" name="links" maxlength="1000" placeholder="GitHub, Google Scholar, personal site, LinkedIn">
+        </label>
 
-      <label class="check-line">
-        <input type="checkbox" name="consent" value="yes" required>
-        <span>I agree that Forall Labs can store these answers to review my application and contact me. <em>*</em></span>
-      </label>
+        <label class="field">
+          <span>Why do you want to join? <em>*</em></span>
+          <textarea name="motivation" required rows="5" maxlength="5000" placeholder="A few sentences is plenty."></textarea>
+        </label>
 
-      <!-- TODO: replace with your Turnstile site key, and uncomment, when the form endpoint is live.
-      <div class="cf-turnstile" data-sitekey="YOUR-TURNSTILE-SITE-KEY"></div>
-      -->
+        <label class="field">
+          <span>How would you like to contribute?</span>
+          <textarea name="contribution" rows="4" maxlength="5000" placeholder="Research, engineering, writing, mentoring, compute, organising events&hellip;"></textarea>
+        </label>
 
-      <!-- Disabled until the form endpoint is live: GitHub Pages serves static files only.
-           To re-enable: delete the .form-disabled block and the disabled attribute. -->
-      <div class="form-disabled">
-        <p><strong>Not accepting submissions yet.</strong> This form goes live with <code>forall-labs.ai</code>. Until then, open an issue on <a href="https://github.com/forall-labs">GitHub</a> and say hello &mdash; it reaches the same person.</p>
+        <label class="check-line">
+          <input type="checkbox" name="consent" value="Yes" required>
+          <span>I agree that Forall Labs can store these answers to review my application and contact me. <em>*</em></span>
+        </label>
+
+        <p class="form-error" role="alert" hidden>Your application could not be sent. Please try again in a moment, or reach us through <a href="https://github.com/forall-labs">GitHub</a>.</p>
+        <div class="actions">
+          <button class="btn primary" type="submit">Send application</button>
+          <p class="form-note">Fields marked <em>*</em> are required.</p>
+        </div>
+      </form>
+
+      <div class="form-success" id="apply-done" tabindex="-1" hidden>
+        <div class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></div>
+        <h2>Application received.</h2>
+        <p>Thank you for applying. We read every application and will reply by email, usually within two weeks. A copy of this confirmation is on its way to your inbox.</p>
+        <div class="actions">
+          <a class="btn primary" href="/research/">Explore our research</a>
+          <a class="btn" href="/propose/">Propose a project</a>
+        </div>
       </div>
-      <div class="actions"><button class="btn primary" type="submit" disabled>Send application</button></div>
-    </form>
+    </div>
   </div>
 </section>

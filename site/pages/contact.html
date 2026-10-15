@@ -1,0 +1,88 @@
+<!-- {"url": "/contact/", "title": "Contact | Forall Labs", "nav": "/about/", "description": "Get in touch with Forall Labs: questions, the reading group, supporting the work, collaborations and press."} -->
+
+<section class="page-head">
+  <div class="wrap">
+    <p class="eyebrow">Contact</p>
+    <h1>Get in touch.</h1>
+    <p class="lead">Questions, collaborations, the reading group or support for the work: send a message and a person will reply by email.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top: 0">
+  <div class="wrap form-layout">
+    <aside class="form-aside">
+      <h2>Other ways to reach us</h2>
+      <ol>
+        <li><span><strong>Want to join?</strong>The <a href="/apply/">membership application</a> is the quickest route in.</span></li>
+        <li><span><strong>Have a research idea?</strong><a href="/propose/">Propose a project</a> so it can be shared with the community.</span></li>
+        <li><span><strong>About code or a paper?</strong>Open an issue on <a href="https://github.com/forall-labs">GitHub</a>, where the work lives.</span></li>
+      </ol>
+    </aside>
+
+    <div>
+      <form class="form" data-form data-success="contact-done" method="post" action="{{form_action}}">
+        <input type="hidden" name="_subject" value="Forall Labs: contact form">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://forall-labs.github.io/thanks/">
+        <input type="hidden" name="_autoresponse" value="Thank you for contacting Forall Labs. We have your message and will reply by email. Forall Labs">
+        <!-- Honeypot: hidden from people, bots fill it in. -->
+        <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></div>
+
+        <div class="field-row">
+          <label class="field">
+            <span>Full name <em>*</em></span>
+            <input type="text" name="name" required autocomplete="name" maxlength="200">
+          </label>
+          <label class="field">
+            <span>Email <em>*</em></span>
+            <input type="email" name="email" required autocomplete="email" maxlength="200">
+          </label>
+        </div>
+
+        <div class="field-row">
+          <label class="field">
+            <span>What is it about? <em>*</em></span>
+            <select name="topic" required>
+              <option value="">Choose one</option>
+              <option data-topic="question">A general question</option>
+              <option data-topic="reading-group">Joining the reading group</option>
+              <option data-topic="support">Supporting the work</option>
+              <option data-topic="collaboration">A collaboration or partnership</option>
+              <option data-topic="press">Press or speaking</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Organisation</span>
+            <input type="text" name="organisation" maxlength="200" autocomplete="organization" placeholder="Optional">
+          </label>
+        </div>
+
+        <label class="field">
+          <span>Message <em>*</em></span>
+          <textarea name="message" required rows="7" maxlength="5000" placeholder="If you are offering compute, credits or funding, a rough idea of what and how much helps."></textarea>
+        </label>
+
+        <label class="check-line">
+          <input type="checkbox" name="consent" value="Yes" required>
+          <span>I agree that Forall Labs can store this message and reply to me by email. <em>*</em></span>
+        </label>
+
+        <p class="form-error" role="alert" hidden>Your message could not be sent. Please try again in a moment, or reach us through <a href="https://github.com/forall-labs">GitHub</a>.</p>
+        <div class="actions">
+          <button class="btn primary" type="submit">Send message</button>
+          <p class="form-note">Fields marked <em>*</em> are required.</p>
+        </div>
+      </form>
+
+      <div class="form-success" id="contact-done" tabindex="-1" hidden>
+        <div class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7"/></svg></div>
+        <h2>Message sent.</h2>
+        <p>Thank you for getting in touch. We will reply by email. A copy of this confirmation is on its way to your inbox.</p>
+        <div class="actions">
+          <a class="btn primary" href="/">Back to the homepage</a>
+          <a class="btn" href="/research/">Explore our research</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
